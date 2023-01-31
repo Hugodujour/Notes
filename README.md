@@ -11,7 +11,7 @@ This is a simple note-taking app built with React. It allows users to create, vi
 
 ## Usage 
 
-1. Clone the repository: `git clone https://github.com/<username>/react-notes-app.git`
+1. Clone the repository: `git clone https://github.com/Hugodujour/react-notes-app.git`
 2. Change into the app's directory: `cd react-notes-app`
 3. Install dependencies: `npm install` or `yarn install`
 4. Start the development server: `npm start` or `yarn start`
