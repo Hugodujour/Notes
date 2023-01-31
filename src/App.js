@@ -1,16 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { nanoid } from 'nanoid'
 import NotesList from "./components/NotesList"
 
 const App = () => {
   const [notes, setNotes] = useState([
     {
-      id: nanoid(),
+      id: 1,
       text: "This is my first note !",
       date: "15/15/15",
     },
     {
-      id: nanoid(),
+      id: 2,
       text: "This is my 2 note !",
       date: "15/15/15",
     },
@@ -26,6 +26,23 @@ const App = () => {
     },
     
   ])
+
+  useEffect(() => {
+		const savedNotes = JSON.parse(
+			localStorage.getItem('notes-data')
+		);
+
+		if (savedNotes) {
+			setNotes(savedNotes);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(
+			'notes-data',
+			JSON.stringify(notes)
+		);
+	}, [notes]);
 
   const addNote = (text) => {
     const date = new Date()
@@ -45,7 +62,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <NotesList notes={notes}
+      <NotesList notes={notes.filter((note)=> note.text)}
       handleAddNote={addNote}
       handleDeleteNote={deleteNote}
       />
